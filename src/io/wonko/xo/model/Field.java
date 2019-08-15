@@ -1,6 +1,9 @@
 package io.wonko.xo.model;
 
+import io.wonko.xo.model.exceptions.AlreadyOccupiedException;
+import io.wonko.xo.model.exceptions.InvalidPointException;
 import java.awt.*;
+import java.awt.image.ImagingOpException;
 
 public class Field {
 
@@ -13,11 +16,21 @@ public class Field {
     public int getSize() {
         return FIELD_SIZE; }
 
-     public Figure getFigure(Point point) {
+     public Figure getFigure(Point point) throws InvalidPointException {
+        if(!checkPoint(point)){
+            throw new InvalidPointException();
+        }
         return field[point.x][point.y];
      }
 
-     public void setFigure(final Point point, final Figure figure) {
+     public void setFigure(final Point point, final Figure figure) throws InvalidPointException, AlreadyOccupiedException {
+         if(!checkPoint(point)){
+             throw new InvalidPointException();
+         }
+         if(field[point.x][point.y] != null){
+             throw new AlreadyOccupiedException();
+         }
+
         field[point.x][point.y] = figure;
      }
 
