@@ -2,8 +2,8 @@ package io.wonko.xo.model;
 
 import io.wonko.xo.model.exceptions.AlreadyOccupiedException;
 import io.wonko.xo.model.exceptions.InvalidPointException;
+
 import java.awt.*;
-import java.awt.image.ImagingOpException;
 
 public class Field {
 

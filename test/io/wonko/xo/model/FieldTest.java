@@ -1,5 +1,7 @@
 package io.wonko.xo.model;
 
+import io.wonko.xo.model.exceptions.AlreadyOccupiedException;
+import io.wonko.xo.model.exceptions.InvalidPointException;
 import org.junit.Test;
 import org.omg.PortableServer.POA;
 
@@ -17,7 +19,7 @@ public class FieldTest {
     }
 
     @Test
-    public void setFigure() {
+    public void setFigure() throws AlreadyOccupiedException, InvalidPointException {
         final Field field = new Field();
         final Point inputPoint = new Point(0, 0);
         final Figure inputFigure = Figure.O;
